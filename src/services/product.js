@@ -1,5 +1,5 @@
 let index = (req, res) => {
-  res.render("admin/master");
+  res.render("admin/content/home/home");
 };
 
 module.exports = {
