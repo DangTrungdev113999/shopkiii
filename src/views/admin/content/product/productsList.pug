@@ -1,0 +1,37 @@
+extends ./../../master.pug
+
+block content  
+  .card.shadow.mb-4
+    .card-header.py-3
+      h6.m-0.font-weight-bold.text-primary Products List
+    .card-body
+      .table-responsive
+        table#dataTable.table.table-bordered(width='100%' cellspacing='0')
+          thead
+            tr
+              th STT
+              th Product Name
+              th Product Image
+              th Price
+              th Sale Price
+              th Category
+              th CreatedAt
+              th Action
+          tbody
+            tr
+              td  1
+              td  name
+              td  name
+              td  price
+              td  price
+              td  category
+              td  name
+              td
+                a.btn.btn-success.btn-circle.btn-sm.show-Detail-product(href='javascript:void(0)' data-pid='')
+                  i.fas.fa-check 
+                span &nbsp;
+                a.btn.btn-warning.btn-circle.btn-sm.edit-product(href='javascript:void(0)' data-pid='')
+                  i.fas.fa-info-circle
+                span &nbsp;
+                a.btn.btn-danger.btn-circle.btn-sm.delete-product(href='javascript:void(0)' data-pid='')
+                  i.fas.fa-trash

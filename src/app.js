@@ -4,9 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const connectDB = require("./config/connectDB");
 const adminRouter = require("./routes/admin");
 
 const app = express();
+
+// connect to mongodb
+connectDB();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

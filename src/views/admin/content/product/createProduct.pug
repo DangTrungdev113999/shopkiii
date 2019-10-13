@@ -1,0 +1,45 @@
+extends ./../../master.pug
+
+block content  
+  .row
+    .col-md-1
+    .col-md-8.col-sm-12.col-12
+      .row
+        .col-md-6.col-sm-12.col-12
+          .form-group
+            label(for='productName') Product Name
+            input#productName.form-control(type='text' name='productName' placeholder='Product Name')
+        .col-md-6.col-sm-12.col-12
+          label.my-1.mr-2(for='inlineFormCustomSelectPref') Categofy
+          select#inlineFormCustomSelectPref.custom-select.my-1.mr-sm-2
+            option(selected='') Choose...
+            option(value='1') One
+            option(value='2') Two
+            option(value='3') Three
+      .row
+        .col-md-4.col-sm-12.col-12
+          .form-group
+            label(for='productPrice') Product Price
+            input#productPrice.form-control(type='number' name='productPrice' placeholder='Product Price')
+        .col-md-4.col-sm-12.col-12
+          .form-group
+            label(for='productSalePrice') Product Sale Price
+            input#productSalePrice.form-control(type='number' name='productSalePrice' placeholder='Product Name')
+        .col-md-4.col-sm-12.col-12
+          .form-group
+            label(for='createdProduct') Product Created
+            input#createdProduct.form-control(type='date' name='createdProduct')
+      .row
+        .col-md-12.col-sm-12.col-12
+          label(for='Desciption') Desciption
+          textarea#Desciption.form-control(name='Desciption' rows='3')
+      .row
+        .col-md-12.col-sm-12.col-12.mt-4
+          a#createProduct.btn.btn-primary.btn-icon-split(href='javascript:void(0)')
+            span.icon.text-white-50
+              i.fas.fa-flag
+            span.text Create Product
+    .col-md-3.col-sm-12.col-12
+      .form-group
+        label(for='productImage') Product image
+        input#productImage.form-control-file(type='file' name='iamge')
