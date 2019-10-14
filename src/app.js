@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session')
 
 const connectDB = require("./config/connectDB");
 const adminRouter = require("./routes/admin");
@@ -11,6 +12,13 @@ const app = express();
 
 // connect to mongodb
 connectDB();
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60 * 60 * 24 * 1000 }
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

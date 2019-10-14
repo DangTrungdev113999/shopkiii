@@ -1,18 +1,24 @@
 const express = require("express");
 
-const { product } = require("./../services/index")
+const { product, user } = require("./../services/index")
+const auth = require("./../middleware/auth");
 
 const router = express.Router();
 
-router.get('/', product.home);
+router.get("/login", user.getLogin);
+router.post("/login", user.postLogin);
 
-router.get("/products", product.getAllProduct)
-router.get("/product/:pid", product.getProduct)
+router.get('/', auth.checkLogin, product.home);
 
-router.get("/product", product.getCreate);
-router.post("/product", product.postCreate);
-router.put("/product/:pid", product.updateProduct);
-router.delete("/product/:pid", product.deleteProduct);
+router.get("/products",  auth.checkLogin,  product.getAllProduct);
+router.get("/product/:pid", auth.checkToken, product.getProduct);
+
+router.get("/product",  auth.checkLogin,  product.getCreate);
+router.post("/product",auth.checkToken, product.postCreate);
+router.put("/product/:pid",auth.checkToken, product.updateProduct);
+router.delete("/product/:pid",auth.checkToken, product.deleteProduct);
+
+
 
 
 module.exports = router;

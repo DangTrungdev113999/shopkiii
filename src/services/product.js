@@ -6,9 +6,14 @@ let home = (req, res) => {
 };
 
 let getAllProduct = async (req, res) => {
-  let products = await Product.find().exec();
-  res.render("admin/content/product/productsList", { products });
-  // res.json(products);
+  try {
+    let products = await Product.find().exec();
+    // res.render("admin/content/product/productsList", { products });
+    res.status(200).json(products);
+  } catch (error) {
+    console.log(error);
+  }
+
 }
 
 let getProduct = async (req, res) => {
