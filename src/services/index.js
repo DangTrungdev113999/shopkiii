@@ -1,5 +1,5 @@
-let product = require("./product");
-let user = require("./user");
+import product  from "./product";
+import user  from "./user";
 
 
 module.exports = {

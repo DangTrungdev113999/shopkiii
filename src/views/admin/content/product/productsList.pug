@@ -18,20 +18,22 @@ block content
               th CreatedAt
               th Action
           tbody
-            tr
-              td  1
-              td  name
-              td  name
-              td  price
-              td  price
-              td  category
-              td  name
-              td
-                a.btn.btn-success.btn-circle.btn-sm.show-Detail-product(href='javascript:void(0)' data-pid='')
-                  i.fas.fa-check 
-                span &nbsp;
-                a.btn.btn-warning.btn-circle.btn-sm.edit-product(href='javascript:void(0)' data-pid='')
-                  i.fas.fa-info-circle
-                span &nbsp;
-                a.btn.btn-danger.btn-circle.btn-sm.delete-product(href='javascript:void(0)' data-pid='')
-                  i.fas.fa-trash
+            if products.length
+              each product, i in products
+                tr
+                  td  1
+                  td= product.name
+                  td  product image
+                  td= product.price
+                  td= product.SalePrice
+                  td= product.category.name
+                  td= product.createdAt
+                  td
+                    a.btn.btn-success.btn-circle.btn-sm.show-Detail-product(href='javascript:void(0)' data-pid='')
+                      i.fas.fa-check 
+                    span &nbsp;
+                    a.btn.btn-warning.btn-circle.btn-sm.edit-product(href='javascript:void(0)' data-pid='')
+                      i.fas.fa-info-circle
+                    span &nbsp;
+                    a.btn.btn-danger.btn-circle.btn-sm.delete-product(href='javascript:void(0)' data-pid='')
+                      i.fas.fa-trash

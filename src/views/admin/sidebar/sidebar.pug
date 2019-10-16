@@ -20,13 +20,22 @@ ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordio
     | Interface
   // Nav Item - Pages Collapse Menu
   li.nav-item
+    a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapse1' aria-expanded='true' aria-controls='collapse1')
+      i.fas.fa-fw.fa-table
+      span Managment
+    #collapse1.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
+      .bg-white.py-2.collapse-inner.rounded
+        h6.collapse-header MANAGMENT:
+        a.collapse-item(href='/admin/product/create') Create managment
+        a.collapse-item(href='/admin/products') List users
+  li.nav-item
     a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo')
       i.fas.fa-fw.fa-table
       span Product
     #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
       .bg-white.py-2.collapse-inner.rounded
         h6.collapse-header PRODUCT:
-        a.collapse-item(href='/admin/product/create') Create Product
+        a.collapse-item(href='/admin/product') Create Product
         a.collapse-item(href='/admin/products') List Produts
   // Nav Item - Utilities Collapse Menu
   // Divider

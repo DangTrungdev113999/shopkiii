@@ -1,6 +1,6 @@
-const path = require("path");
-const fs = require("fs");
-const jwt = require("jsonwebtoken");
+import path from "path";
+import fs from "fs";
+import jwt from "jsonwebtoken";
 
 let checkLogin = (req, res, next) => {
   if (req.session.user) {

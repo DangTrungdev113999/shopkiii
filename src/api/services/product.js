@@ -1,29 +1,9 @@
-import Product from './../models/product';
-
-
-let home = (req, res) => {
-  res.render("admin/content/home/home");
-};
-
-let getAllProduct = async (req, res) => {
-  try {
-    let products = await Product.find().exec();
-    res.render("admin/content/product/productsList", { products });
-    // res.status(200).json(products);
-  } catch (error) {
-    console.log(error);
-  }
-
-}
+import Product from './../../models/product';
 
 let getProduct = async (req, res) => {
   let productId = req.params.pid;
   let result = await Product.findById(productId).exec();
   res.json(result);
-}
-
-let getCreate = (req, res) => {
-  res.render("admin/content/product/createProduct");
 }
 
 
@@ -60,10 +40,7 @@ let deleteProduct = async (req, res) => {
 }
 
 module.exports = {
-  home,
-  getAllProduct,
   getProduct,
-  getCreate,
   postCreate,
   updateProduct,
   deleteProduct

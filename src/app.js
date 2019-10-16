@@ -7,6 +7,7 @@ const session = require('express-session')
 
 const connectDB = require("./config/connectDB");
 const adminRouter = require("./routes/admin");
+const apiAdminRouter = require("./api/routers/admin");
 
 const app = express();
 
@@ -14,9 +15,9 @@ const app = express();
 connectDB();
 
 app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
+  secret: 'phieuyet',
+  resave: true,
+  saveUninitialized: false,
   cookie: { maxAge: 60 * 60 * 24 * 1000 }
 }))
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use("/admin", adminRouter);
+app.use("/api/admin", apiAdminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,13 +50,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-
-
-
-
-
 
 module.exports = app;
