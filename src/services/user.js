@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require('fs');
 
 let getLogin = (req, res) => {
-  res.render();
+  res.render("admin/login/login");
 };
 
 let postLogin = async (req, res) => {
