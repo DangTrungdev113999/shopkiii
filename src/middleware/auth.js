@@ -20,8 +20,8 @@ let checkLogout = (req, res, next) => {
 let checkToken = async (req, res, next) => {
   try {
     let token = req.headers.token;
-    let cert = fs.readFileSync(path.join(__dirname, "../../cert.pem")); // get public key
-    jwt.verify(token, cert, { algorithms: ['RS256'] });
+    let cert = fs.readFileSync(path.join(__dirname, "../../csr.pem")); // get public key
+    jwt.verify(token, "shhh",);
     if (cert) {
       return next();
     }
