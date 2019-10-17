@@ -21,7 +21,7 @@ block content
             if products.length
               each product, i in products
                 tr
-                  td  1
+                  td= i + 1
                   td= product.name
                   td  product image
                   td= product.price
