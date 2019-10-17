@@ -12,16 +12,12 @@ let postLogin = async (req, res) => {
     let password = req.body.password;
     if (username === "phieuyet@gmail.com" && password === "Aa@123456") {
       const privateKey = fs.readFileSync(path.join(__dirname, "../../key.pem"));
-      console.log(__dirname);
       const token = jwt.sign({
         username
-      }, privateKey, { algorithm: 'RS256', expiresIn: '2h'});
-      
+      }, privateKey, { expiresIn: '2h'});
       req.session.user = {
         username
       }
-
-      // console.log(req.session.user);
 
       res.status(200).send({
         status: true,
@@ -42,8 +38,13 @@ let postLogin = async (req, res) => {
 }
 
 
+let logout = (req, res) => {
+  req.logout();
+  res.redirect("/admin/login");
+}
 
 module.exports = {
   getLogin,
   postLogin,
+  logout
 }
