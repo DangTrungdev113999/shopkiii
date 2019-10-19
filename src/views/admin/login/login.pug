@@ -27,7 +27,7 @@ head
               .p-5
                 .text-center
                   h1.h4.text-gray-900.mb-4 Welcome Back!
-                form.user
+                form.user(method="POST", action="/admin/login")
                   .form-group
                     input#InputEmail.form-control.form-control-user(type='email' name="username" aria-describedby='emailHelp' placeholder='Enter Email Address...')
                   .form-group
@@ -36,7 +36,7 @@ head
                     .custom-control.custom-checkbox.small
                       input#customCheck.custom-control-input(type='checkbox')
                       label.custom-control-label(for='customCheck') Remember Me
-                  a#admin-login-btn.btn.btn-primary.btn-user.btn-block(href='javascript:void(0)')
+                  button#admin-login-btn.btn.btn-primary.btn-user.btn-block(type="submit")
                     | Login
                   hr
                   a.btn.btn-google.btn-user.btn-block(href='index.html')

@@ -3,7 +3,7 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 
 let checkLogin = (req, res, next) => {
-  if (req.session.user) {
+  if (req.isAuthenticated()) {
     return next();
   }
     return res.redirect("/admin/login");
@@ -13,7 +13,6 @@ let checkLogout = (req, res, next) => {
   if (req.session.user) {
     res.redirect("/admin");
   }
-
   return next();
 }
 
