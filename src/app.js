@@ -1,7 +1,7 @@
 import express from 'express';
+import passport from "passport";
 
 import configViewEngine from "./config/viewEngine";
-import configHandleError from "./config/handleError";
 import session from "./config/session";
 
 import connectDB from "./config/connectDB";
@@ -17,12 +17,13 @@ session(app);
 // view engine setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 configViewEngine(app);
 
 app.use("/admin", adminRouter);
 app.use("/api/admin", apiAdminRouter);
 
-configHandleError(app);
 
 module.exports = app;
