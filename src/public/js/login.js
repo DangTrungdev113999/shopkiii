@@ -4,7 +4,7 @@ function adminlogin() {
     let password = $("#InputPassword").val();
 
     let regxUsername = new RegExp(
-      /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/
+      /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/
     );
 
     let regxPassword = new RegExp(
@@ -17,7 +17,7 @@ function adminlogin() {
     }
 
     if (!regxUsername.test(username)) {
-      alertify.notify("Invalid email, example: example@gmail.com", "error", 6);
+      alertify.notify("Username dose not contain special characters", "error", 6);
       return;
     }
 

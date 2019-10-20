@@ -1,4 +1,4 @@
-import Product from './../../models/product';
+import Product from './../../models/Product';
 
 let getProduct = async (req, res) => {
   let productId = req.params.pid;
