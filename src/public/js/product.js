@@ -4,7 +4,7 @@ function createProduct() {
     let category = $("#category").val();
     let price = +$("#productPrice").val();
     let salePrice = +$("#productSalePrice").val();
-    let desciption = $("#desciptionProduct").val();
+    let description = $("#desciptionProduct").val();
     let createdAt = $("#createdProduct").val() ?  $("#createdProduct").val() : Date.now();
 
     let regxPrice = new RegExp(/^\d+(,\d{1,2})?$/);
@@ -52,22 +52,52 @@ function createProduct() {
       return;
     } 
 
-    if (!desciption.length) {
+    if (!description.length) {
       alertify.notify("You have to enter desciption", "error", 6);
       return;
     }
 
-    if (!regxDescription.test(desciption)) {
+    if (!regxDescription.test(description)) {
       alertify.notify("desciption not special characters", "error", 6);
       return;
     }
 
-    
+    $.post({
+      url: "/api/admin/product",
+      data: {
+        name, category, price, salePrice, description  
+      },
+      // headers: localStorage.getItem(token)
+    })
+    .then(res => {
+      window.location.href = "http://localhost:3000/admin/products";
+    })
+    .catch(err => console.log(err))
 
   })
 }
 
 
+function deleteProduct() {
+  $(".delete-product").on("click", function() {
+    let id = $(this).data("pid");
+    $.ajax({
+      method: "delete",
+      url: `/api/admin/product/${id}`
+    })
+    .then(res => {
+      if (res === true) {
+        $(`tr[data-pid=${id}]`).remove();
+      }
+    })
+    .catch(err => {
+      alertify.notify(`${err.statusText}`, "error", 6)
+    })
+  })
+}
+
 $(document).ready(function() {
   createProduct();
+
+  deleteProduct();
 })

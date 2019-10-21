@@ -14,12 +14,11 @@ router.get("/login", user.getLogin)
         successRedirect: "/admin",
         failureRedirect: "/admin/login"
       }));
-
 router.get("/logout", user.logout);
 
 router.get('/', auth.checkLogin, product.home);  
 router.get("/products", auth.checkLogin,  product.getAllProduct);  
-router.get("/product",  product.getCreate);  
+router.get("/product", auth.checkLogin,  product.getCreate);  
 
 
 module.exports = router;

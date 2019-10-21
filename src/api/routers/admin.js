@@ -1,7 +1,7 @@
 // const express = require("express");
 import express from "express";
 
-import { product } from "./../../services/index";
+import { product } from "./../services/index";
 import auth  from  "./../../middleware/auth";
 
 const router = express.Router();
@@ -9,9 +9,9 @@ const router = express.Router();
 
 
 router.get("/product/:pid", auth.checkToken, product.getProduct);
-router.post("/product",auth.checkToken, product.postCreate);
+router.post("/product", product.postCreate);
 router.put("/product/:pid",auth.checkToken, product.updateProduct);
-router.delete("/product/:pid",auth.checkToken, product.deleteProduct);
+router.delete("/product/:pid", product.deleteProduct);
 
 
 

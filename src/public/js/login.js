@@ -1,6 +1,6 @@
 function adminlogin() {
   $("#admin-login-btn").on("click", async function() {
-    let username = $("#InputEmail").val();
+    let username = $("#InputUsername").val();
     let password = $("#InputPassword").val();
 
     let regxUsername = new RegExp(
@@ -12,7 +12,7 @@ function adminlogin() {
     )
 
     if (!username.length) {
-      alertify.notify("You have to enter email", "error", 6);
+      alertify.notify("You have to enter username", "error", 6);
       return;
     }
 

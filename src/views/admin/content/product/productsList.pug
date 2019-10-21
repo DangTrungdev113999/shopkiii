@@ -20,20 +20,20 @@ block content
           tbody
             if products.length
               each product, i in products
-                tr
+                tr(data-pid=product._id)
                   td= i + 1
                   td= product.name
                   td  product image
                   td= product.price
-                  td= product.SalePrice
-                  td= product.category.name
+                  td= product.salePrice
+                  td= product.category
                   td= product.createdAt
                   td
-                    a.btn.btn-success.btn-circle.btn-sm.show-Detail-product(href='javascript:void(0)' data-pid='')
+                    a.btn.btn-success.btn-circle.btn-sm.show-Detail-product(href='javascript:void(0)' data-pid=product._id)
                       i.fas.fa-check 
                     span &nbsp;
-                    a.btn.btn-warning.btn-circle.btn-sm.edit-product(href='javascript:void(0)' data-pid='')
+                    a.btn.btn-warning.btn-circle.btn-sm.edit-product(href='javascript:void(0)' data-pid=product._id)
                       i.fas.fa-info-circle
                     span &nbsp;
-                    a.btn.btn-danger.btn-circle.btn-sm.delete-product(href='javascript:void(0)' data-pid='')
+                    a.btn.btn-danger.btn-circle.btn-sm.delete-product(href='javascript:void(0)' data-pid=product._id)
                       i.fas.fa-trash

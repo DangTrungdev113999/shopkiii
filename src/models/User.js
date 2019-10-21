@@ -9,7 +9,11 @@ const UserSchema = new Schema({
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: null },
   deletedAt: {  type: Number, default: null  }
-})   // collecyion: "..." not change name collection
+})
+
+UserSchema.static = {
+  
+}
 
 const User  = mongoose.model("user", UserSchema);
 
