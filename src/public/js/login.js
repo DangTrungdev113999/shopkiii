@@ -61,6 +61,21 @@ function adminlogin() {
   })
 };
 
+function login() {
+  $("#admin-login-btn").bind("click", function() {
+    let username = $("#InputUsername").val();
+    let password =  $("#InputPassword").val();
+    $.post("/admin/login", {username, password} )
+      .then(data => {
+        console.log(data.token);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  })
+}
+
 $(document).ready(function() {{
   adminlogin();
+  login();
 }});

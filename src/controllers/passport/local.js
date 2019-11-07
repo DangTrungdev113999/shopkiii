@@ -1,8 +1,15 @@
 import passport from "passport";
 import passportLocal from "passport-local";
+import passportJWT from "passport-jwt";
+
 import User from "./../../models/User";
 
-let localStragery = passportLocal.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
+const JWTStrategy   = passportJWT.Strategy;
+const localStragery = passportLocal.Strategy;
+
+
+
 
 let initPassportLocal = () => {
   passport.use(
@@ -10,36 +17,36 @@ let initPassportLocal = () => {
       {
         usernameField: "username",
         passwordField: "password",
-        passReqToCallback: true
       },
-      async (req, username, password, done) => {
+      async (username, password, done) => {
         try {
           let user = await User.findOne({username, password}).exec();
           if (!user) {
-            return done(null, false)
+            return done(null, false);
           }
           return done(null, user);
         } catch (error) {
-          console.log(user);
+          console.log(error);
           done(error, null)
         }
       }
     ),
-
   );
 
-  passport.serializeUser((user, done) => {
-    done(null, user._id);
-  });
+  passport.use(new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.SECRET_KEY_JWT
+      },
+      async (user, done) => {
+        try {
+          let user = await User.findById(user._id).exec();
+          return done(null, user);
+        } catch (error) {
+          return done(error, null);
+        }
+      }
+    ))
 
-  passport.deserializeUser( async (id, done) => {
-    try {
-      let user = await User.findById(id).exec();
-      done(null, user);
-    } catch (error) {
-      return done(error, null)
-    }
-  })
 }
 
 

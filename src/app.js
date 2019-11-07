@@ -17,8 +17,6 @@ session(app);
 // view engine setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 configViewEngine(app);
 
